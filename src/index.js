@@ -24,16 +24,16 @@ document.addEventListener('DOMContentLoaded', () => {
               li_tag.class = "countries"
               li_tag.dataset.countryName = element.item[0].name
               comments.append(li_tag)
-  })}
+      })
+  }
 
   comments.addEventListener('click', function(){
    let x = event.target
-      const formHTML =`<form id="comment_form">
-            <input id="comment_input" class="${event.target.id}" type="text" name="comment" placeholder="Add Comment"/>
-            <input data-country-name="${event.target.id}" type="submit" value="submit" id="submit"/>
-          </form>`
-            if (x.children.length < 1){x.innerHTML += formHTML}
+      const formHTML =
+        `<form id="comment_form"> <input id="comment_input" class="${event.target.id}" type="text" name="comment" placeholder="Add Comment"/> <input data-country-name="${event.target.id}" type="submit" value="submit" id="submit"/> </form>`
+          if (x.children.length < 1){x.innerHTML += formHTML}
   })
+
   comments.addEventListener('submit', function(event){
     event.preventDefault()
       let y = event.target[0]
@@ -46,9 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
             event.target.reset()
           }
   })
+
+
   function secondRound(){
-    fetch(`https://country.register.gov.uk/records.json?page-size=5000`)
-      .then(r => r.json())
+      fetch(`https://country.register.gov.uk/records.json?page-size=5000`)
+        .then(r => r.json())
         .then(data => {
           const xtraInfo = Object.values(data)
           const element = xtraInfo[Math.floor(Math.random() * xtraInfo.length)];
@@ -57,36 +59,33 @@ document.addEventListener('DOMContentLoaded', () => {
             li_tag.style["height"]=  "50px"
             li_tag.style["margin"]=  "1em"
             li_tag.style["background-color"] = "blue"
-              li_tag.innerText = element.item[0]["name"]
-              li_tag.id = element.item[0]["citizen-names"]
-              li_tag.class = "countries"
-              li_tag.dataset.countryName = element.item[0].name
+            li_tag.innerText = element.item[0]["name"]
+            li_tag.id = element.item[0]["citizen-names"]
+            li_tag.class = "countries"
+            li_tag.dataset.countryName = element.item[0].name
               comments_right.append(li_tag)
-        })
+          })
 
-  comments_right.addEventListener('click', function(){
-    let x = event.target
-     const formHTML =
-      `<form id="comment_form">
-        <input id="comment_input" class="${event.target.id}" type="text" name="comment" placeholder="Add Comment"/>
-          <input data-country-name="${event.target.id}" type="submit" value="submit" id="submit"/>
-          </form>`
+    comments_right.addEventListener('click', function(){
+      let x = event.target
+       const formHTML =
+        `<form id="comment_form"> <input id="comment_input" class="${event.target.id}" type="text" name="comment" placeholder="Add Comment"/> <input data-country-name="${event.target.id}" type="submit" value="submit" id="submit"/> </form>`
           if (x.children.length < 1){x.innerHTML += formHTML}
-   })
-  comments_right.addEventListener('submit', function(event){
-    event.preventDefault()
-      let y = event.target[0]
-        console.log(y)
-          if (y.value == y.className){
+    })
+
+    comments_right.addEventListener('submit', function(event){
+      event.preventDefault()
+        let y = event.target[0]
+          console.log(y)
+            if (y.value == y.className){
               alert("Great answer!")
                 firstRound()
-          }
-          else{
-            event.target.reset()
-          }
-  })
-}
+            }
+            else{
+              event.target.reset()
+            }
+    })
+  }
 
   firstRound()
 })
-//
