@@ -15,14 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
           const element = info[Math.floor(Math.random() * info.length)];
           const color = boxColorArray[Math.floor(Math.random() * boxColorArray.length)];
             const li_tag = document.createElement('div')
-              li_tag.style["width"] =  "300px"
-              li_tag.style["height"]=  "50px"
-              li_tag.style["margin"]=  "1em"
+            comments.style["display"] = "grid"
+            comments.style["grid-template-columns"] = " 135px 135px 135px 135px "
+            comments.style["grid-template-rows"] = " 75px 75px 75px 75px "
+              li_tag.style["grid-gap"] = "10px"
+              li_tag.style["border-radius"]=  "5px"
+              li_tag.style["height"]=  "75px"
+              li_tag.style["width"]=  "135px"
               li_tag.style["background-color"] = `${color}`
               li_tag.innerText = element.item[0].name
               li_tag.id = element.item[0].country
               li_tag.class = "countries"
               li_tag.dataset.countryName = element.item[0].name
+
               comments.append(li_tag)
       })
   }
@@ -54,11 +59,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
           const xtraInfo = Object.values(data)
           const element = xtraInfo[Math.floor(Math.random() * xtraInfo.length)];
+          const color = boxColorArray[Math.floor(Math.random() * boxColorArray.length)];
           const li_tag = document.createElement('div')
-            li_tag.style["width"] =  "300px"
-            li_tag.style["height"]=  "50px"
-            li_tag.style["margin"]=  "1em"
-            li_tag.style["background-color"] = "blue"
+          comments_right.style["display"] = "grid"
+          comments_right.style["grid-template-columns"] = " 135px 135px 135px 135px "
+          comments_right.style["grid-template-rows"] = " 75px 75px 75px 75px  "
+            li_tag.style["grid-gap"] = "10px"
+            li_tag.style["border-radius"]=  "5px"
+            li_tag.style["height"]=  "75px"
+            li_tag.style["width"]=  "135px"
+            li_tag.style["background-color"] = `${color}`
             li_tag.innerText = element.item[0]["name"]
             li_tag.id = element.item[0]["citizen-names"]
             li_tag.class = "countries"
