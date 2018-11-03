@@ -1,7 +1,7 @@
 # Sporadic Geographic - VanillaJS 
 
 ## Description 
-Here is a guessing game that consists of every country. You are firdt prompted to guess a randomly selected country's two letter country code. After correctly submitting the two letter code you then must guess the proper term citizen's of a country go by. Can you get 50 right answers
+Here is a guessing game that consists of every country. You are first prompted to guess a randomly selected country's two letter country code. After correctly submitting the two letter code you then must guess the proper term citizen's of a country go by. Can you get 50 right answers
 
 ## Instructions 
 1. Fork and clone this repository
